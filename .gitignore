@@ -1,0 +1,6 @@
+# Git Ignore file
+
+*bundle.js
+temp*
+node_modules/
+
