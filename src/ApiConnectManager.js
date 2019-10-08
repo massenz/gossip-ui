@@ -8,6 +8,10 @@ class ApiConnectManager extends React.Component {
 
     constructor() {
         super();
+        this.state = {
+            btnIcon: "glyphicon glyphicon-circle-arrow-right",
+            btnDisabled: false
+        };
         this.connect = this.connect.bind(this);
     }
 
@@ -15,11 +19,18 @@ class ApiConnectManager extends React.Component {
         event.preventDefault();
         var ipAddress = this.props.data;
         if (IP_PATTERN.test(ipAddress)) {
+            this.setState(() => ({ btnDisabled: true }));
             this.props
                 .apiCall(ipAddress)
                 .then(
-                    response => { this.props.onSuccess(response.data); },
-                    error => { this.props.onError(error); }
+                    response => {
+                        this.setState(() => ({ btnDisabled: false }));
+                        this.props.onSuccess(response.data);
+                    },
+                    error => {
+                        this.setState(() => ({ btnDisabled: false }));
+                        this.props.onError(error);
+                    }
                 )
                 .catch(error => console.log(error));
         } else {
@@ -29,8 +40,10 @@ class ApiConnectManager extends React.Component {
 
     render() {
         return (
-            <button type="button" className="btn" onClick={ this.connect }>
-                <span className="glyphicon glyphicon-circle-arrow-right"
+            <button type="button" className="btn"
+                    disabled={this.state.btnDisabled}
+                    onClick={ this.connect }>
+                <span className={this.state.btnIcon}
                       aria-hidden="true"></span>
             </button>
         );

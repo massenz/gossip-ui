@@ -51,9 +51,10 @@ class GossipDetector extends React.Component {
         if (error.reason) {
             console.error("API Call returned an error: " + error.reason);
         } else {
-            console.console.error("Failure: " + error);
+            console.error("Failure: " + error);
             error = {reason: error};
         }
+
         this.setState(() => ({
             hasError: true,
             error: error,
@@ -94,7 +95,10 @@ class GossipDetector extends React.Component {
     }
 
     handleTextChange(currentText) {
-        this.setState(() => ({text: currentText}));
+        this.setState(() => ({
+            text: currentText,
+            hasError: false
+        }));
     }
 }
 

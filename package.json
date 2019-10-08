@@ -16,15 +16,23 @@
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
     "babel-preset-react-app": "^3.1.2",
-    "cross-env": "^5.2.0",
+    "cross-env": "^5.2.1",
     "enzyme": "^2.9.0",
     "react-test-renderer": "^15.6.0",
     "webpack": "^3.12.0",
-    "webpack-dev-server": "^2.11.2"
+    "webpack-dev-server": "^2.11.5"
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "react": "^16.4.1",
-    "react-dom": "^16.4.1"
-  }
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/marco/detectors-ui.git"
+  },
+  "homepage": "https://bitbucket.org/marco/detectors-ui#readme"
 }

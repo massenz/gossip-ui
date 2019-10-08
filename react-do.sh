@@ -12,4 +12,4 @@ npm i --save-dev babel-loader babel-core babel-preset-react-app \
 npm i --save react react-dom
 
 npm run build
-nmp start
+npm start
