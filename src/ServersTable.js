@@ -3,17 +3,10 @@ import React from 'react';
 
 function ServersTable({servers}) {
 
-    return (
-        <table className="table table-striped">
-            <thead>
-            <tr>
-                <th>#</th>
-                <th>IP</th>
-                <th>Hostname</th>
-                <th>Port</th>
-                <th>Last updated</th><th>Timestamp (sec from epoch)</th>
-            </tr>
-            </thead>
+    let tbody;
+    if (typeof servers !== 'undefined') {
+        console.log("Rendering servers: ", servers.length);
+        tbody =
             <tbody>{servers.map((serverRecord, idx) => {
                 const {server, timestamp} = serverRecord;
                 // This is a Unix timestamp in seconds; JS requires msec.
@@ -29,7 +22,23 @@ function ServersTable({servers}) {
                     </tr>
                 );
             })}
-            </tbody>
+            </tbody>;
+    } else {
+        tbody = <tbody></tbody>;
+    }
+
+    return (
+        <table className="table table-striped">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>IP</th>
+                <th>Hostname</th>
+                <th>Port</th>
+                <th>Last updated</th><th>Timestamp (sec from epoch)</th>
+            </tr>
+            </thead>
+            {tbody}
         </table>
     );
 }
